@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,10 @@ import java.util.List;
  * Helper to take or select an image using intents.
  */
 public class TakeOrSelectImage {
+
+    private static final String OUTPUT_FILE_URI = "TOSI_OUTPUT_FILE_URI";
+    private static final String CHOOSER_TITLE = "TOSI_CHOOSER_TITLE";
+    private static final String REQUEST_CODE = "TOSI_REQUEST_CODE";
 
     /**
      * The output file URI used to store the image if taken from the camera.
@@ -66,7 +71,34 @@ public class TakeOrSelectImage {
     }
 
     /**
+     * To be called from an Activity or Fragment's onCreate method.
+     *
+     * @param savedInstanceState the previously saved state
+     */
+    public void onCreate(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            outputFileUri = savedInstanceState.getParcelable(OUTPUT_FILE_URI);
+            chooserTitle = savedInstanceState.getString(CHOOSER_TITLE);
+            requestCode = savedInstanceState.getInt(REQUEST_CODE);
+        }
+    }
+
+    /**
+     * To be called from an Activity or Fragment's onSaveInstanceState method.
+     *
+     * @param outState the bundle to save state in
+     */
+    public void onSaveInstanceState(Bundle outState) {
+        if (outState != null) {
+            outState.putParcelable(OUTPUT_FILE_URI, outputFileUri);
+            outState.putString(CHOOSER_TITLE, chooserTitle.toString());
+            outState.putInt(REQUEST_CODE, requestCode);
+        }
+    }
+
+    /**
      * To be called from an Activity or Fragment's onActivityResult method.
+     *
      * @param requestCode The integer request code originally supplied to startActivityForResult(), allowing you to identify who this result came from.
      * @param resultCode The integer result code returned by the child activity through its setResult().
      * @param data An Intent, which can return result data to the caller (various data can be attached to Intent "extras").

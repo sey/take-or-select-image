@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.seventythree_apps.takeorselectpicture"
+        applicationId "com.seventythree_apps.takeorselectimage"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1

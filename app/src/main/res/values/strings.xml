@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">TakeOrSelectPicture</string>
-        <string name="title_activity_main">MainActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">TakeOrSelectImage</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="take_or_select_image">Take or Select Image</string>
 </resources>

@@ -42,6 +42,14 @@ public class MainActivity extends ActionBarActivity {
                 takeOrSelectImage();
             }
         });
+
+        takeOrSelectImage.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        takeOrSelectImage.onSaveInstanceState(outState);
     }
 
     @Override
